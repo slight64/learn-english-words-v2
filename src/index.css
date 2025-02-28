@@ -2,13 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {}
+@layer base {
+}
 
-/* @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-} */
+:root {
+  --scrollbar-width: 17px; /* Стандартная ширина скроллбара */
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+* {
+  box-sizing: border-box;
+}

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+import { wordsApi } from '@/pages/LearnPage/wordsApi';
 import { Input } from '@/shared/components/ui/input';
 import { Button } from '@/shared/ui/button';
 import {
@@ -13,7 +14,6 @@ import {
 } from '@/shared/ui/Form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { wordsApi } from '@/pages/LearnPage/wordsApi';
 import { useNavigate } from 'react-router-dom';
 
 const formSchema = z.object({

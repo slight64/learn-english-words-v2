@@ -1,0 +1,10 @@
+---
+description: output-lang
+globs: 
+alwaysApply: true
+---
+выводи на русском
+# Your rule content
+
+- You can @ files here
+- You can use markdown but dont have to

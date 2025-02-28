@@ -1,24 +1,26 @@
 import { useLoginMutation } from '@/entities/auth/model/authApi';
 import GenericForm from '@/shared/ui/GenericForm';
-import { z } from 'zod';
-
-const loginSchema = z.object({
-  email: z.string().email({ message: 'Некорректный email' }),
-  password: z
-    .string()
-    .min(6, { message: 'Минимальная длина пароля — 6 символов' }),
-});
+import { useLocation, useNavigate } from 'react-router-dom';
+import type { LoginFormValues } from '../model/schema';
+import { loginSchema } from '../model/schema';
 
 function LoginForm() {
   const [login, { isLoading }] = useLoginMutation();
-  const handleLogin = async (values: { email: string; password: string }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/';
+
+  const handleLogin = async (values: LoginFormValues) => {
     try {
       const response = await login(values).unwrap();
       console.log('Токен:', response.token);
+      navigate(from, { replace: true });
     } catch (err) {
       console.error('Ошибка логина:', err);
     }
   };
+
   return (
     <GenericForm
       schema={loginSchema}
@@ -36,6 +38,7 @@ function LoginForm() {
           label: 'Пароль',
           placeholder: 'Введите пароль',
           description: 'Введите пароль',
+          type: 'password',
         },
       ]}
       submitText={isLoading ? 'Войти...' : 'Войти'}

@@ -1,4 +1,4 @@
-import { baseApi } from '@/shared/api/baseApi';
+import { baseApi } from '@/shared/api/base-api';
 import { z } from 'zod';
 
 export type Word = {

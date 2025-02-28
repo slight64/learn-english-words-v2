@@ -1,11 +1,11 @@
 // import App from '@/app/App.tsx';
+import { router } from '@/app/router/ui/router';
+import { store } from '@/app/store/model/store';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import './index.css';
-import { RouterProvider } from 'react-router-dom';
-import { router } from '@/app/router/root';
 import { Provider } from 'react-redux';
-import { store } from './app/store/store';
+import { RouterProvider } from 'react-router-dom';
+import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

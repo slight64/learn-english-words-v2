@@ -22,6 +22,7 @@ interface GenericFormProps<T extends ZodSchema<FieldValues>> {
     label: string;
     placeholder?: string;
     description?: string;
+    type?: string;
   }>;
   submitText?: string;
 }
@@ -41,7 +42,7 @@ function GenericForm<T extends ZodSchema<FieldValues>>({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        {fields.map(({ name, label, placeholder, description }) => (
+        {fields.map(({ name, label, placeholder, description, type }) => (
           <FormField
             key={String(name)}
             control={form.control}
@@ -50,7 +51,7 @@ function GenericForm<T extends ZodSchema<FieldValues>>({
               <FormItem>
                 <FormLabel>{label}</FormLabel>
                 <FormControl>
-                  <Input placeholder={placeholder} {...field} />
+                  <Input placeholder={placeholder} {...field} type={type} />
                 </FormControl>
                 {description && (
                   <FormDescription>{description}</FormDescription>
