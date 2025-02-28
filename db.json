@@ -1,0 +1,36 @@
+{
+  "words": [
+    {
+      "id": "5309",
+      "word": "Hello",
+      "translation": "Привет"
+    },
+    {
+      "id": "d0e3",
+      "word": "Hello",
+      "translation": "Привет"
+    }
+  ],
+  "users": [
+    {
+      "id": "user1",
+      "name": "John",
+      "description": "My first user"
+    },
+    {
+      "id": "user3",
+      "name": "Rocj",
+      "description": "My third user"
+    },
+    {
+      "id": "user4",
+      "name": "Ace",
+      "description": "My fourth user"
+    },
+    {
+      "id": "user5",
+      "name": "Dace",
+      "description": "My fifth user"
+    }
+  ]
+}
