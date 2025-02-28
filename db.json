@@ -1,0 +1,41 @@
+{
+  "words": [
+    {
+      "id": "1",
+      "word": "hello",
+      "translation": "привет"
+    },
+    {
+      "id": "3dc6",
+      "word": "новай",
+      "translation": "ggggfd"
+    },
+    {
+      "id": "9cb4",
+      "word": "ооооо",
+      "translation": "фывыфвф"
+    }
+  ],
+  "users": [
+    {
+      "id": "user1",
+      "name": "John",
+      "description": "My first user"
+    },
+    {
+      "id": "user3",
+      "name": "Rocj",
+      "description": "My third user"
+    },
+    {
+      "id": "user4",
+      "name": "Ace",
+      "description": "My fourth user"
+    },
+    {
+      "id": "user5",
+      "name": "Dace",
+      "description": "My fifth user"
+    }
+  ]
+}
