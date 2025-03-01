@@ -2,11 +2,10 @@ import { MainLayout } from '@/app/main-layout/ui/main-layout';
 import { store } from '@/app/store/model/store';
 import { wordsApi } from '@/entities/word/model/words-api';
 import { ProtectedRoute } from '@/features/auth/protected-route/ui/protected-route';
-import { PublicRoute } from '@/features/auth/public-route/ui/public-route';
 import CreatePage from '@/pages/CreatePage';
-import { HomePage } from '@/pages/home/ui/home-page';
+import HomePage from '@/pages/home';
 import LearnPage from '@/pages/LearnPage';
-import LoginPage from '@/pages/LoginPage';
+import NotFoundPage from '@/pages/not-found-page';
 import { createBrowserRouter } from 'react-router-dom';
 
 const loadStore = () =>
@@ -32,7 +31,6 @@ export const router = createBrowserRouter([
         ),
         loader: () => {
           loadStore().then(async () => {
-            console.log('prefetch');
             store.dispatch(wordsApi.util.prefetch('getWords', undefined, {}));
           });
           return null;
@@ -46,14 +44,10 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: '*',
+        element: <NotFoundPage />,
+      },
     ],
-  },
-  {
-    path: 'login',
-    element: (
-      <PublicRoute>
-        <LoginPage />
-      </PublicRoute>
-    ),
   },
 ]);

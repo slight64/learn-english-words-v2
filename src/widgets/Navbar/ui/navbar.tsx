@@ -1,33 +1,42 @@
 import type { RootState } from '@/app/store/model/store';
-import { useAppSelector } from '@/app/store/model/store';
-import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@/app/store/model/store';
+import { logout } from '@/entities/auth/model/slice';
+import { AuthDialog } from '@/entities/auth/ui/auth-dialog';
+import { Button } from '@/shared/components/ui/button';
+import CustomLink from '@/shared/components/ui/CustomLink';
 
 export function Navbar() {
   const token = useAppSelector((state: RootState) => state.auth.token);
+  const dispatch = useAppDispatch();
 
   return (
-    <nav className="bg-gray-800 text-white p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-xl font-bold">
+    <nav className="bg-gray-800 text-white py-4 px-10 h-16 flex items-center relative before:absolute before:z-[-1] before:bg-gray-800 before:top-0 before:left-1/2 before:translate-x-[-50%] before:w-screen before:content-[''] before:bottom-0">
+      <div className="container flex justify-between ">
+        <CustomLink to="/" className="text-xl font-bold">
           WordsApp
-        </Link>
+        </CustomLink>
         <div className="space-x-4">
-          <Link to="/" className="hover:text-gray-300">
+          <CustomLink to="/" className="hover:text-gray-300">
             Главная
-          </Link>
+          </CustomLink>
           {token ? (
             <>
-              <Link to="/learn" className="hover:text-gray-300">
+              <CustomLink to="/learn" className="hover:text-gray-300">
                 Учить
-              </Link>
-              <Link to="/create" className="hover:text-gray-300">
+              </CustomLink>
+              <CustomLink to="/create" className="hover:text-gray-300">
                 Создать
-              </Link>
+              </CustomLink>
+              <Button variant="outline" onClick={() => dispatch(logout())}>
+                Выйти
+              </Button>
             </>
           ) : (
-            <Link to="/login" className="hover:text-gray-300">
-              Войти
-            </Link>
+            <AuthDialog>
+              <Button variant="outline" className="hover:text-gray-300">
+                Войти
+              </Button>
+            </AuthDialog>
           )}
         </div>
       </div>

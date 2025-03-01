@@ -1,5 +1,5 @@
 import { DeleteWordDialog } from '@/features/words/delete-word/ui/delete-word-dialog';
-import { Button } from '@/shared/ui/button';
+import { Button } from '@/shared/components/ui/button';
 
 interface WordCardProps {
   id: number;

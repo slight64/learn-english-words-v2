@@ -1,5 +1,7 @@
-import { lazy } from "react";
+import { lazy } from 'react';
 
-const CreatePage:React.LazyExoticComponent<React.ComponentType> = lazy(() => import("./CreatePage"))
+const CreatePage: React.LazyExoticComponent<React.ComponentType> = lazy(
+  () => import('./create-page')
+);
 
-export default CreatePage
+export default CreatePage;
