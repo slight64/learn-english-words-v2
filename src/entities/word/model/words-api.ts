@@ -3,9 +3,9 @@ import { z } from 'zod';
 import { Word } from './types';
 
 const WordDtoSchema = z.object({
-  id: z.number(),
-  name: z.string(),
-  description: z.string(),
+  id: z.string(),
+  word: z.string(),
+  translation: z.string(),
   createdAt: z.string(),
 });
 
@@ -16,6 +16,11 @@ export const wordsApi = baseApi.injectEndpoints({
       providesTags: ['Words', { type: 'Words', id: 'LIST' }],
       transformErrorResponse: (res: unknown) =>
         WordDtoSchema.array().parse(res),
+    }),
+    getOneWord: build.query<Word, string>({
+      query: (id) => `/words/${id}`,
+      providesTags: ['Words', { type: 'Words', id: 'LIST' }],
+      transformErrorResponse: (res: unknown) => WordDtoSchema.parse(res),
     }),
     createWord: build.mutation({
       query: (data) => ({

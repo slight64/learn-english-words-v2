@@ -11,9 +11,9 @@ import {
 import { toast } from 'sonner';
 
 interface DeleteWordDialogProps {
-  wordId: number;
+  wordId: string;
   wordText: string;
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
   children: React.ReactNode;
 }
 

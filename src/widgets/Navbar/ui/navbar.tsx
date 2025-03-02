@@ -1,5 +1,5 @@
-import type { RootState } from '@/app/store/model/store';
 import { useAppDispatch, useAppSelector } from '@/app/store/model/store';
+import type { RootState } from '@/app/store/model/types';
 import { logout } from '@/entities/auth/model/slice';
 import { AuthDialog } from '@/entities/auth/ui/auth-dialog';
 import { Button } from '@/shared/components/ui/button';
@@ -43,3 +43,5 @@ export function Navbar() {
     </nav>
   );
 }
+
+export default Navbar;

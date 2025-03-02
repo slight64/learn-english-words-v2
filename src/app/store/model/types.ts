@@ -1,8 +1,4 @@
-import type { AuthState } from '@/entities/auth/model/types';
-import type { baseApi, loginApi } from '@/shared/api/base-api';
+import { store } from './store';
 
-export interface RootState {
-  auth: AuthState;
-  [baseApi.reducerPath]: ReturnType<typeof baseApi.reducer>;
-  [loginApi.reducerPath]: ReturnType<typeof loginApi.reducer>;
-}
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

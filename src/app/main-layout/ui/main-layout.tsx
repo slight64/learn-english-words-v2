@@ -1,4 +1,4 @@
-import { Navbar } from '@/widgets/Navbar/ui/navbar';
+import { Navbar } from '@/widgets/navbar/ui/navbar';
 import { Outlet } from 'react-router-dom';
 import { Toaster } from 'sonner';
 
