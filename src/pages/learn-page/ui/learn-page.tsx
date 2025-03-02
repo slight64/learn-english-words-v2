@@ -1,17 +1,22 @@
+import { wordsApi } from '@/entities/word/model/words-api';
 import { WordCard } from '@/entities/word/ui/word-card';
-import { wordsApi } from '@/pages/LearnPage/wordsApi';
+import { toast } from 'sonner';
 
 const LearnPage = () => {
   const { data, isLoading } = wordsApi.useGetWordsQuery();
-  const [deleteWord] = wordsApi.useDeleteWordMutation();
-  const handleDelete = async (id: number) => {
+  const [deleteWord, { isError }] = wordsApi.useDeleteWordMutation();
+  const handleDelete = async (id: string) => {
     try {
-      console.log('delete', id);
       await deleteWord(id).unwrap();
     } catch (e) {
-      console.log('error', e);
+      throw new Error(e as string);
     }
   };
+
+  if (isError) {
+    toast.error('Ошибка при удалении слова');
+  }
+
   if (isLoading) {
     return <div>Loading</div>;
   }

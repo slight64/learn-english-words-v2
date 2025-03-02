@@ -1,8 +1,7 @@
 import { z } from 'zod';
 
-import { wordsApi } from '@/pages/LearnPage/wordsApi';
-import { Input } from '@/shared/components/ui/input';
-import { Button } from '@/shared/ui/button';
+import { wordsApi } from '@/entities/word/model/words-api';
+import { Button } from '@/shared/components/ui/button';
 import {
   Form,
   FormControl,
@@ -11,10 +10,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/shared/ui/Form';
+} from '@/shared/components/ui/Form';
+import { Input } from '@/shared/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const formSchema = z.object({
   word: z.string().min(2, {
@@ -81,7 +82,14 @@ function CreateWordForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Добавить</Button>
+        <Button
+          type="submit"
+          onClick={() => {
+            toast.success('Слово добавлено в словарь');
+          }}
+        >
+          Добавить
+        </Button>
       </form>
     </Form>
   );

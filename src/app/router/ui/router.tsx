@@ -1,18 +1,11 @@
-import { MainLayout } from '@/app/main-layout/ui/main-layout';
-import { store } from '@/app/store/model/store';
-import { wordsApi } from '@/entities/word/model/words-api';
+import MainLayout from '@/app/main-layout/';
 import { ProtectedRoute } from '@/features/auth/protected-route/ui/protected-route';
-import { PublicRoute } from '@/features/auth/public-route/ui/public-route';
-import CreatePage from '@/pages/CreatePage';
-import { HomePage } from '@/pages/home/ui/home-page';
-import LearnPage from '@/pages/LearnPage';
-import LoginPage from '@/pages/LoginPage';
+import CreatePage from '@/pages/create-page';
+import HomePage from '@/pages/home';
+import LearnPage from '@/pages/learn-page';
+import NotFoundPage from '@/pages/not-found-page';
+import WordPage from '@/pages/word-page';
 import { createBrowserRouter } from 'react-router-dom';
-
-const loadStore = () =>
-  new Promise((resolve) => {
-    setTimeout(() => resolve(store), 0);
-  });
 
 export const router = createBrowserRouter([
   {
@@ -30,13 +23,10 @@ export const router = createBrowserRouter([
             <LearnPage />
           </ProtectedRoute>
         ),
-        loader: () => {
-          loadStore().then(async () => {
-            console.log('prefetch');
-            store.dispatch(wordsApi.util.prefetch('getWords', undefined, {}));
-          });
-          return null;
-        },
+      },
+      {
+        path: 'learn/:id',
+        element: <WordPage />,
       },
       {
         path: 'create',
@@ -46,14 +36,14 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: '*',
+        element: <NotFoundPage />,
+      },
+      {
+        path: 'not-found',
+        element: <NotFoundPage />,
+      },
     ],
-  },
-  {
-    path: 'login',
-    element: (
-      <PublicRoute>
-        <LoginPage />
-      </PublicRoute>
-    ),
   },
 ]);

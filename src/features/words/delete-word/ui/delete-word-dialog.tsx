@@ -1,3 +1,4 @@
+import { Button } from '@/shared/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -7,12 +8,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/shared/components/ui/dialog';
-import { Button } from '@/shared/ui/button';
+import { toast } from 'sonner';
 
 interface DeleteWordDialogProps {
-  wordId: number;
+  wordId: string;
   wordText: string;
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
   children: React.ReactNode;
 }
 
@@ -36,7 +37,10 @@ export function DeleteWordDialog({
         <DialogFooter>
           <Button
             className="bg-red-500 hover:bg-red-300"
-            onClick={() => onDelete(wordId)}
+            onClick={() => {
+              onDelete(wordId);
+              toast.success('Слово удалено');
+            }}
           >
             Удалить
           </Button>

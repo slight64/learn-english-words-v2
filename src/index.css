@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-}
-
-:root {
-  --scrollbar-width: 17px; /* Стандартная ширина скроллбара */
-}
-
 html {
   scrollbar-gutter: stable;
 }
