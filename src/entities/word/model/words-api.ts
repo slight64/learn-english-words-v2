@@ -38,6 +38,14 @@ export const wordsApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['Words'],
     }),
+    editWord: build.mutation({
+      query: (data) => ({
+        url: `/words/${data.id}`,
+        method: 'PUT',
+        body: data,
+      }),
+      invalidatesTags: ['Words'],
+    }),
   }),
   overrideExisting: true,
 });

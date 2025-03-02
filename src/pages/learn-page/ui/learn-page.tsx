@@ -1,7 +1,8 @@
 import { wordsApi } from '@/entities/word/model/words-api';
 import { WordCard } from '@/entities/word/ui/word-card';
-import { Button } from '@/shared/ui/button';
+import { Button } from '@/shared/components/ui/button';
 import Search from '@/widgets/search';
+import { SortAsc, SortDesc } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { toast } from 'sonner';
 
@@ -54,7 +55,9 @@ const LearnPage = () => {
       <h1 className="text-2xl font-bold">Слова для изучения</h1>
       <div className="flex gap-4 items-center mt-4 mb-4">
         <Search value={search} placeholder="Поиск" onChange={setSearch} />
-        <Button onClick={handleSort}>Сортировка</Button>
+        <Button onClick={handleSort}>
+          {sortType === 'asc' ? <SortAsc /> : <SortDesc />}
+        </Button>
       </div>
 
       <div className="mt-10 flex flex-col gap-4">

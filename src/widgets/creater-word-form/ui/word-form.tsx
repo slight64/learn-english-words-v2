@@ -14,8 +14,13 @@ import {
 import { Input } from '@/shared/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
+
+interface WordFormProps {
+  word?: string;
+  translation?: string;
+}
 
 const formSchema = z.object({
   word: z.string().min(2, {
@@ -26,20 +31,25 @@ const formSchema = z.object({
   }),
 });
 
-function CreateWordForm() {
+export const WordForm = ({ word, translation }: WordFormProps) => {
+  const { id } = useParams();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      word: '',
-      translation: '',
+      word: word || '',
+      translation: translation || '',
     },
   });
   const navigate = useNavigate();
   const [createWord] = wordsApi.useCreateWordMutation();
+  const [editWord] = wordsApi.useEditWordMutation();
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      console.log(values);
-      await createWord(values).unwrap();
+      if (word) {
+        await editWord({ id, ...values }).unwrap();
+      } else {
+        await createWord(values).unwrap();
+      }
       navigate('/learn');
     } catch (e) {
       console.log(e);
@@ -85,14 +95,14 @@ function CreateWordForm() {
         <Button
           type="submit"
           onClick={() => {
-            toast.success('Слово добавлено в словарь');
+            toast.success(word ? 'Слово изменено' : 'Слово добавлено');
           }}
         >
-          Добавить
+          {word ? 'Изменить' : 'Добавить'}
         </Button>
       </form>
     </Form>
   );
-}
+};
 
-export default CreateWordForm;
+export default WordForm;

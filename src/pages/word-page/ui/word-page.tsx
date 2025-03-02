@@ -1,6 +1,8 @@
 import { wordsApi } from '@/entities/word/model/words-api';
 import { DeleteWordDialog } from '@/features/words/delete-word/ui/delete-word-dialog';
 import { Button } from '@/shared/components/ui/button';
+import WordForm from '@/widgets/creater-word-form/ui/word-form';
+import { Trash } from 'lucide-react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 
 const WordPage = () => {
@@ -34,21 +36,26 @@ const WordPage = () => {
 
   return (
     <div className="px-10 py-8 mx-auto">
+      <h1 className="text-2xl font-bold">Редактирование слова</h1>
       {data && (
-        <div className="flex items-center justify-between rounded-lg border p-4">
+        <div className="flex mt-4 justify-between rounded-lg border p-4">
           <div>
-            <h3 className="font-medium">{data.word}</h3>
-            <p className="text-sm text-gray-500">{data.translation}</p>
+            <WordForm word={data.word} translation={data.translation} />
           </div>
-          <DeleteWordDialog
-            wordId={data.id}
-            wordText={data.word}
-            onDelete={handleDelete}
-          >
-            <Button variant="ghost" size="sm">
-              Удалить
+          <div className="flex flex-col justify-between items-end">
+            <Button variant="outline" onClick={() => navigate('/learn')}>
+              Назад
             </Button>
-          </DeleteWordDialog>
+            <DeleteWordDialog
+              wordId={data.id}
+              wordText={data.word}
+              onDelete={handleDelete}
+            >
+              <Button className="bg-slate-300" variant="outline" size="icon">
+                <Trash />
+              </Button>
+            </DeleteWordDialog>
+          </div>
         </div>
       )}
     </div>
