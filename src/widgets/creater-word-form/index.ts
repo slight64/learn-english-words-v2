@@ -1,3 +1,3 @@
-import CreateWordForm from './ui/word-form';
+import WordForm from './ui/word-form';
 
-export default CreateWordForm;
+export default WordForm;

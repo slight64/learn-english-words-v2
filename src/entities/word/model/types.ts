@@ -3,4 +3,5 @@ export interface Word {
   word: string;
   translation: string;
   createdAt: string;
+  updatedAt: string[];
 }

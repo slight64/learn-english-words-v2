@@ -20,6 +20,8 @@ import { toast } from 'sonner';
 interface WordFormProps {
   word?: string;
   translation?: string;
+  createdAt?: string;
+  updatedAt?: string[];
 }
 
 const formSchema = z.object({
@@ -29,26 +31,42 @@ const formSchema = z.object({
   translation: z.string().min(2, {
     message: 'Перевод должен содержать минимум 2 символа.',
   }),
+  createdAt: z.string().optional(),
+  updatedAt: z.array(z.string()).optional(),
 });
 
-export const WordForm = ({ word, translation }: WordFormProps) => {
+export const WordForm = ({
+  word,
+  translation,
+  createdAt,
+  updatedAt,
+}: WordFormProps) => {
   const { id } = useParams();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       word: word || '',
       translation: translation || '',
+      createdAt: createdAt || '',
+      updatedAt: updatedAt || [],
     },
   });
   const navigate = useNavigate();
   const [createWord] = wordsApi.useCreateWordMutation();
   const [editWord] = wordsApi.useEditWordMutation();
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      if (word) {
+      if (word && updatedAt) {
+        values.updatedAt = values.updatedAt
+          ? [...values.updatedAt, new Date().toISOString()]
+          : [new Date().toISOString()];
         await editWord({ id, ...values }).unwrap();
+        toast.success('Слово изменено');
       } else {
+        values.createdAt = new Date().toISOString();
         await createWord(values).unwrap();
+        toast.success('Слово добавлено');
       }
       navigate('/learn');
     } catch (e) {
@@ -94,9 +112,7 @@ export const WordForm = ({ word, translation }: WordFormProps) => {
         />
         <Button
           type="submit"
-          onClick={() => {
-            toast.success(word ? 'Слово изменено' : 'Слово добавлено');
-          }}
+          className={form.formState.isValid ? 'bg-slate-300' : ''}
         >
           {word ? 'Изменить' : 'Добавить'}
         </Button>

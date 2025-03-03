@@ -1,6 +1,7 @@
 import { wordsApi } from '@/entities/word/model/words-api';
 import { DeleteWordDialog } from '@/features/words/delete-word/ui/delete-word-dialog';
 import { Button } from '@/shared/components/ui/button';
+import { formatDate } from '@/shared/lib/utils';
 import WordForm from '@/widgets/creater-word-form/ui/word-form';
 import { Trash } from 'lucide-react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
@@ -40,7 +41,18 @@ const WordPage = () => {
       {data && (
         <div className="flex mt-4 justify-between rounded-lg border p-4">
           <div>
-            <WordForm word={data.word} translation={data.translation} />
+            <WordForm
+              word={data.word}
+              translation={data.translation}
+              createdAt={data.createdAt}
+              updatedAt={data.updatedAt}
+            />
+          </div>
+          <div>
+            <p>{`Дата создания: ${formatDate(data.createdAt)}`}</p>
+            <p>{`Дата последнего обновления:
+              ${formatDate(data.updatedAt[data.updatedAt.length - 1])}
+`}</p>
           </div>
           <div className="flex flex-col justify-between items-end">
             <Button variant="outline" onClick={() => navigate('/learn')}>

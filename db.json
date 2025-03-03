@@ -1,19 +1,31 @@
 {
   "words": [
     {
-      "id": "55d1",
-      "word": "Hello",
-      "translation": "Привет"
-    },
-    {
-      "id": "7b74",
-      "word": "предполагать",
-      "translation": "assume"
-    },
-    {
       "id": "23a5",
       "word": "resolve",
-      "translation": "решать"
+      "translation": "решать",
+      "createdAt": "2025-03-03T10:00:00.000Z",
+      "updatedAt": ["2025-03-03T10:00:00.000Z"]
+    },
+    {
+      "word": "предполагать",
+      "translation": "assume",
+      "createdAt": "2025-03-03T10:05:56.840Z",
+      "updatedAt": ["2025-03-03T10:06:08.246Z"],
+      "id": "4370"
+    },
+    {
+      "word": "Заключениe",
+      "translation": "Conclusion",
+      "createdAt": "2025-03-03T10:07:20.798Z",
+      "updatedAt": [
+        "2025-03-03T10:07:26.676Z",
+        "2025-03-03T10:07:33.279Z",
+        "2025-03-03T10:07:40.156Z",
+        "2025-03-03T10:07:55.102Z",
+        "2025-03-03T10:16:14.427Z"
+      ],
+      "id": "df0c"
     }
   ],
   "users": [
