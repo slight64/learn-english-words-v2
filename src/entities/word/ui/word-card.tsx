@@ -1,4 +1,4 @@
-import { DeleteWordDialog } from '@/features/words/delete-word/ui/delete-word-dialog';
+import { DeleteWordDialog } from '@/features/word';
 import { Button } from '@/shared/components/ui/button';
 import { Edit, Trash } from 'lucide-react';
 import { Link } from 'react-router-dom';

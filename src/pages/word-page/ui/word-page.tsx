@@ -1,8 +1,8 @@
 import { wordsApi } from '@/entities/word/model/words-api';
-import { DeleteWordDialog } from '@/features/words/delete-word/ui/delete-word-dialog';
+import { DeleteWordDialog } from '@/features/word/';
 import { Button } from '@/shared/components/ui/button';
 import { formatDate } from '@/shared/lib/utils';
-import WordForm from '@/widgets/creater-word-form/ui/word-form';
+import WordForm from '@/entities/word/ui/word-form';
 import { Trash } from 'lucide-react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 

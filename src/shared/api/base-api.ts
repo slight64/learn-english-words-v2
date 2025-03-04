@@ -1,4 +1,3 @@
-import type { AuthResponse, LoginRequest } from '@/entities/auth/model/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const baseUrl = 'http://localhost:3000';
@@ -15,13 +14,5 @@ export const loginApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: loginUrl }),
   tagTypes: ['Login'],
   reducerPath: 'loginApi',
-  endpoints: (builder) => ({
-    login: builder.mutation<AuthResponse, LoginRequest>({
-      query: (credentials) => ({
-        url: '/login',
-        method: 'POST',
-        body: credentials,
-      }),
-    }),
-  }),
+  endpoints: () => ({}),
 });

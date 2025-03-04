@@ -10,7 +10,7 @@ import {
 } from '@/shared/components/ui/dialog';
 import { toast } from 'sonner';
 
-interface DeleteWordDialogProps {
+export interface DeleteWordDialogProps {
   wordId: string;
   wordText: string;
   onDelete: (id: string) => void;

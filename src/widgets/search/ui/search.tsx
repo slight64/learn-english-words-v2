@@ -1,3 +1,4 @@
+import { Input } from '@/shared/components/ui/input';
 import { useEffect, useState } from 'react';
 
 interface SearchProps {
@@ -27,7 +28,7 @@ export const Search = ({
   };
   return (
     <div className={className}>
-      <input
+      <Input
         className="border border-gray-300 rounded-md p-2"
         value={search}
         onChange={handleChange}

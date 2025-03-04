@@ -1,5 +1,5 @@
-import type { RootState } from '@/app/store/model/store';
-import { useAppSelector } from '@/app/store/model/store';
+import type { RootState } from '@/app/models/types';
+import { useAppSelector } from '@/app/models/store';
 import { Navigate, useLocation } from 'react-router-dom';
 
 interface ProtectedRouteProps {

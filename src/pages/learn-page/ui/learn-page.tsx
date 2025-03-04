@@ -1,5 +1,5 @@
-import { wordsApi } from '@/entities/word/model/words-api';
-import { WordCard } from '@/entities/word/ui/word-card';
+import { wordsApi } from '@/entities/word';
+import { WordCard } from '@/entities/word';
 import { Button } from '@/shared/components/ui/button';
 import Search from '@/widgets/search';
 import { SortAsc, SortDesc } from 'lucide-react';

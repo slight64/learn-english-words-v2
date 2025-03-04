@@ -1,4 +1,4 @@
-import { useLoginMutation } from '@/entities/auth/model/authApi';
+import { useLoginMutation } from '@/features/auth/model/authApi';
 import type { LoginFormValues } from '@/features/auth/login/model/schema';
 import { loginSchema } from '@/features/auth/login/model/schema';
 import {
@@ -17,7 +17,7 @@ interface DeleteWordDialogProps {
 }
 
 export function AuthDialog({ children }: DeleteWordDialogProps) {
-  const [login, { isLoading }] = useLoginMutation();
+  const [login] = useLoginMutation();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -62,7 +62,7 @@ export function AuthDialog({ children }: DeleteWordDialogProps) {
               type: 'password',
             },
           ]}
-          submitText={isLoading ? 'Войти...' : 'Войти'}
+          submitText={'Войти'}
         />
       </DialogContent>
     </Dialog>

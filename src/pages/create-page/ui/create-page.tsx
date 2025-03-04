@@ -1,4 +1,4 @@
-import WordForm from '@/widgets/creater-word-form/ui/word-form';
+import { WordForm } from '@/entities/word';
 
 const CreatePage = () => {
   return (

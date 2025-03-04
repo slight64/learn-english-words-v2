@@ -1,7 +1,7 @@
-import { useAppDispatch, useAppSelector } from '@/app/store/model/store';
-import type { RootState } from '@/app/store/model/types';
-import { logout } from '@/entities/auth/model/slice';
-import { AuthDialog } from '@/entities/auth/ui/auth-dialog';
+import { useAppDispatch, useAppSelector } from '@/app/models/store';
+import type { RootState } from '@/app/models/types';
+import { logout } from '@/features/auth/model/slice';
+import { AuthDialog } from '@/features/auth/ui/auth-dialog';
 import { Button } from '@/shared/components/ui/button';
 import CustomLink from '@/shared/components/ui/CustomLink';
 

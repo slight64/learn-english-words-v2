@@ -1,4 +1,4 @@
-import { authSlice } from '@/entities/auth/model/slice';
+import { authSlice } from '@/features/auth/model/slice';
 import { baseApi, loginApi } from '@/shared/api/base-api';
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
